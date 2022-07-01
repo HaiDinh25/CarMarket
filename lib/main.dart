@@ -1,3 +1,4 @@
+import 'package:car_market/home/home.dart';
 import 'package:flutter/material.dart';
 
 void main() {
@@ -10,14 +11,13 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
+    return const MaterialApp(
       title: _title,
-      theme: ThemeData(),
       home: Scaffold(
-        appBar: AppBar(
-          title: const Text(_title),
-        ),
-        body: const MyHomePage(),
+        // appBar: AppBar(
+        //   title: const Text(_title),
+        // ),
+        body: MyHomePage(),
       ),
     );
   }
@@ -43,7 +43,7 @@ class _MyHomePageState extends State<MyHomePage> {
       child: ListView(
         children: <Widget>[
           const SizedBox(
-            height: 70,
+            height: 40,
           ),
           Container(
             alignment: Alignment.center,
@@ -59,6 +59,7 @@ class _MyHomePageState extends State<MyHomePage> {
             ),
           ),
           Container(
+            height: 80,
             padding: const EdgeInsets.all(10),
             child: TextField(
               controller: nameController,
@@ -70,6 +71,7 @@ class _MyHomePageState extends State<MyHomePage> {
             ),
           ),
           Container(
+            height: 80,
             padding: const EdgeInsets.all(10),
             child: TextField(
               obscureText: _isHidden,
@@ -92,12 +94,15 @@ class _MyHomePageState extends State<MyHomePage> {
               ),
             ),
           ),
+          const SizedBox(height: 5),
           Row(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               Container(
                 child: Checkbox(
                   value: _value,
+                  shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(7)),
                   onChanged: (value) {
                     setState(() {
                       _value = value!;
@@ -109,8 +114,9 @@ class _MyHomePageState extends State<MyHomePage> {
               const Text('Remember me')
             ],
           ),
+          const SizedBox(height: 10),
           Container(
-            height: 60,
+            height: 50,
             padding: const EdgeInsets.fromLTRB(10, 0, 10, 0),
             child: ElevatedButton(
               style: ButtonStyle(
@@ -123,13 +129,112 @@ class _MyHomePageState extends State<MyHomePage> {
                     borderRadius: BorderRadius.circular(20),
                   ))),
               onPressed: () {
-                // Navigator.push(
-                //   context,
-                //   MaterialPageRoute(builder: (context) => const HomeRoute()),
-                // );
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => const HomeRoute()),
+                );
               },
               child: const Text('Sign in'),
             ),
+          ),
+          const SizedBox(height: 10),
+          Align(
+            alignment: Alignment.center,
+            child: GestureDetector(
+              child: const Padding(
+                padding: EdgeInsets.all(10),
+                child: Text(
+                  'Forgot the password?',
+                  style: TextStyle(color: Colors.black, fontSize: 16),
+                ),
+              ),
+              // onTap: () {
+              //   Navigator.push(
+              //     context,
+              //     MaterialPageRoute(builder: (context) => const QuenmkRoute()),
+              //   );
+              // } ,
+            ),
+          ),
+          const SizedBox(height: 30),
+          Row(
+            children: const <Widget>[
+              SizedBox(
+                width: 20,
+              ),
+              Expanded(
+                child: Padding(
+                  padding: EdgeInsets.symmetric(
+                    horizontal: 5,
+                  ),
+                  child: Divider(
+                    thickness: 1,
+                  ),
+                ),
+              ),
+              Text(
+                'or continue with',
+                style: TextStyle(fontWeight: FontWeight.w100),
+              ),
+              Expanded(
+                child: Padding(
+                  padding: EdgeInsets.symmetric(
+                    horizontal: 5,
+                  ),
+                  child: Divider(
+                    thickness: 1,
+                  ),
+                ),
+              ),
+              SizedBox(
+                width: 10,
+              ),
+            ],
+          ),
+          const SizedBox(height: 20),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.start,
+            children: <Widget>[
+              Expanded(
+                child: IconButton(
+                  icon: Image.asset('assets/images/icons8-facebook-96.png'),
+                  iconSize: 50,
+                  onPressed: () {},
+                ),
+              ),
+              Expanded(
+                child: IconButton(
+                  icon: Image.asset('assets/images/icons8-google-96.png'),
+                  iconSize: 50,
+                  onPressed: () {},
+                ),
+              ),
+              Expanded(
+                child: IconButton(
+                  icon: Image.asset('assets/images/icons8-apple-logo-60.png'),
+                  iconSize: 50,
+                  onPressed: () {},
+                ),
+              ),
+            ],
+          ),
+          const SizedBox(height: 30),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: <Widget>[
+              RichText(
+                text: TextSpan(
+                  text: 'Don\'t have an account?',
+                  style: DefaultTextStyle.of(context).style,
+                  children: const <TextSpan>[
+                    TextSpan(
+                        text: '  Sign up',
+                        style: TextStyle(
+                            fontWeight: FontWeight.bold, fontSize: 16)),
+                  ],
+                ),
+              )
+            ],
           ),
         ],
       ),
