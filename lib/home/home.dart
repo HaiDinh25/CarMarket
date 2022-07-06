@@ -1,15 +1,19 @@
+import 'package:car_market/home/navigationbar.dart';
 import 'package:car_market/home/selectcard.dart';
 import 'package:car_market/home/selectcard1.dart';
+import 'package:car_market/home/topdealseeall.dart';
 import 'package:flutter/material.dart';
 
 import '../dialog.dart';
+
 
 class HomeRoute extends StatelessWidget {
   const HomeRoute({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return const Scaffold(body: Home());
+    return const Scaffold(body: Home(),
+    bottomNavigationBar: MyBar(),);
   }
 }
 
@@ -140,7 +144,7 @@ class _HomeState extends State<Home> {
           GridView.builder(
             gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
               crossAxisCount: 4,
-              crossAxisSpacing: 4,
+              crossAxisSpacing: 5,
               mainAxisSpacing: 20,
               mainAxisExtent: 80,
             ),
@@ -166,15 +170,22 @@ class _HomeState extends State<Home> {
               ),
               Container(
                 padding: const EdgeInsets.all(20),
-                child: const Text(
-                  'See all',
-                  style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+                child: GestureDetector(
+                  onTap: (){Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) => const SeeAllRoute()),
+                  );},
+                  child: const Text('See All', style: TextStyle(fontWeight: FontWeight.bold,fontSize: 18),),
                 ),
+                // child: const Text(
+                //   'See all',
+                //   style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+                // ),
               ),
             ],
           ),
           SizedBox(
-            height: 120,
+            height: 60,
             child: Container(
               child: ListView.builder(
                 itemBuilder: (context, index) {
@@ -190,8 +201,8 @@ class _HomeState extends State<Home> {
             gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
               crossAxisCount: 2,
               crossAxisSpacing: 5,
-              mainAxisSpacing: 20,
-              mainAxisExtent: 100,
+              mainAxisSpacing: 5,
+              // mainAxisExtent: 100,
             ),
             itemBuilder: (context, index) {
               return SelectCard1(anh: images[index]);
@@ -203,6 +214,7 @@ class _HomeState extends State<Home> {
         ],
       ),
     );
+
   }
 
   Widget _buildItemListView(String text) {
@@ -214,7 +226,7 @@ class _HomeState extends State<Home> {
         padding: const EdgeInsets.all(20),
         child: Text(
           text,
-          style: const TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+          style: const TextStyle(fontSize: 18),
         ),
       ),
     );
@@ -222,11 +234,11 @@ class _HomeState extends State<Home> {
 
   List<String> topDeals = [
     'All',
-    'BMV',
-    'VINFAST',
-    'TOYOTA',
-    'HUYNDAI',
-    'POSCHER'
+    'BMW',
+    'Mescedes',
+    'Tesla',
+    'BMW',
+    'Poscher',
+    'Vinfast'
   ];
 }
-

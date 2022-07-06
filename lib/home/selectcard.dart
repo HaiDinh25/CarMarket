@@ -41,6 +41,7 @@ class SelectCard extends StatelessWidget {
             children: <Widget>[
               Expanded(
                 child: Container(
+                  padding: EdgeInsets.all(12),
                     decoration: BoxDecoration(
                         color: Colors.blueGrey.shade100,
                         borderRadius:

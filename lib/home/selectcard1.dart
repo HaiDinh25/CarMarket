@@ -3,53 +3,162 @@ import 'package:flutter/material.dart';
 import '../dialog.dart';
 
 class Anh {
-  const Anh({required this.title, required this.icon});
+  Anh(
+      {required this.title,
+      this.star,
+      required this.icon,
+      this.condition,
+        this.price,
+      this.isLike});
 
+  bool? isLike;
+  String? star;
   final String title;
   final String icon;
+  String? condition;
+  String? price;
 }
 
 List<Anh> images = <Anh>[
-  const Anh(
-      title: 'Mercedes', icon: 'assets/images/hinh-anh-xe-o-to-dep.jpg'),
-  const Anh(title: 'Tesla', icon: 'assets/images/hinh-anh-xe-o-to-dep.jpg'),
-  const Anh(title: 'BMW', icon: 'assets/images/hinh-anh-xe-o-to-vinfast.jpg'),
-  const Anh(
+  Anh(
+      title: 'Mercedes',
+      star: '4.5',
+      icon: 'assets/images/hinh-anh-xe-o-to-dep.jpg',
+      condition: 'New',
+      price: '150.000USD',
+      isLike: false),
+  Anh(
+      title: 'Tesla',
+      star: '4.5',
+      condition: 'New',
+      price: '150.000USD',
+      icon: 'assets/images/hinh-anh-xe-o-to-dep.jpg',
+      isLike: false),
+  Anh(
+      title: 'BMW',
+      star: '4.5',
+      condition: 'New',
+      price: '150.000USD',
+      icon: 'assets/images/hinh-anh-xe-o-to-vinfast.jpg',
+      isLike: false),
+  Anh(
       title: 'Toyota',
-      icon: 'assets/images/hinh-anh-xe-oto-mitsubishi-xpander.jpg'),
-  const Anh(title: 'Volvo', icon: 'assets/images/hinh-anh-honda-city-2019.jpg'),
-  const Anh(
-      title: 'Honda', icon: 'assets/images/hinh-anh-honda-civic-2019-dep.jpg'),
-  const Anh(title: 'Huyndai', icon: 'assets/images/hinh-anh-o-to-dep.jpg'),
-  const Anh(title: 'More', icon: 'assets/images/anh-o-to.jpg'),
+      star: '4.5',
+      condition: 'New',
+      price: '150.000USD',
+      icon: 'assets/images/hinh-anh-xe-oto-mitsubishi-xpander.jpg',
+      isLike: false),
+  Anh(
+      title: 'Volvo',
+      star: '4.5',
+      price: '150.000USD',
+      condition: 'New',
+      icon: 'assets/images/hinh-anh-honda-city-2019.jpg',
+      isLike: false),
+  Anh(
+      title: 'Honda',
+      star: '4.5',
+      price: '150.000USD',
+      condition: 'New',
+      icon: 'assets/images/hinh-anh-honda-civic-2019-dep.jpg',
+      isLike: false),
+  Anh(
+      title: 'Huyndai',
+      star: '4.5',
+      condition: 'New',
+      price: '150.000USD',
+      icon: 'assets/images/hinh-anh-o-to-dep.jpg',
+      isLike: false),
+  Anh(
+      title: 'More',
+      icon: 'assets/images/anh-o-to.jpg',
+      star: '4.5',
+      price: '150.000USD',
+      condition: 'New',
+      isLike: false),
 ];
 
-class SelectCard1 extends StatelessWidget {
+class SelectCard1 extends StatefulWidget {
   const SelectCard1({Key? key, required this.anh}) : super(key: key);
   final Anh anh;
 
   @override
+  State<SelectCard1> createState() => _SelectCard1State();
+}
+
+class _SelectCard1State extends State<SelectCard1> {
+  @override
   Widget build(BuildContext context) {
     return GestureDetector(
-      onTap: () => showMaterialDialog(context, anh.title),
+      onTap: () => showMaterialDialog(context, widget.anh.title),
       child: Container(
-        alignment: Alignment.center,
         child: Padding(
           padding: const EdgeInsets.all(20.0),
           child: Column(children: <Widget>[
             Expanded(
-              child: SizedBox(
-                child: Image.asset(
-                  anh.icon,
-                  width: double.infinity,
-                  fit: BoxFit.fill,
-                ),
+              child: Stack(
+                children: [
+                  Image.asset(
+                    widget.anh.icon,
+                    width: double.infinity,
+                    fit: BoxFit.fill,
+                  ),
+                  Container(
+                    alignment: Alignment.topRight,
+                    padding: const EdgeInsets.all(10),
+                    child: SizedBox(
+                      height: 20,
+                      child: GestureDetector(
+                        onTap: () {
+                          _setLike();
+                        },
+                        child: widget.anh.isLike == false
+                            ? Image.asset('assets/images/icons8-like-64.png')
+                            : Image.asset('assets/images/icons8-love-96.png'),
+                      ),
+                    ),
+                  )
+                ],
               ),
             ),
-            Text(anh.title),
+            Column(
+              children: <Widget>[
+                Text(widget.anh.title),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    const Icon(Icons.star_half),
+                    Text(widget.anh.star ?? ''),
+                    const SizedBox(
+                      width: 15,
+                    ),
+                    Container(
+                      height: 20,
+                      width: 1,
+                      color: Colors.black,
+                    ),
+                    const SizedBox(
+                      width: 15,
+                    ),
+                    Card(
+                      color: Colors.white54,
+                      child: Text(widget.anh.condition ?? ''),
+                    )
+                  ],
+                ),
+                Text(widget.anh.price ?? ''),
+              ],
+            )
+            // Text(widget.anh.title),
           ]),
         ),
       ),
     );
+  }
+
+  void _setLike() {
+    setState(() {
+      widget.anh.isLike = !widget.anh.isLike!;
+    });
   }
 }
