@@ -1,3 +1,4 @@
+import 'package:car_market/const/string.dart';
 import 'package:car_market/home/home.dart';
 import 'package:flutter/material.dart';
 
@@ -54,7 +55,7 @@ class _MyHomePageState extends State<MyHomePage> {
             alignment: Alignment.center,
             padding: const EdgeInsets.all(20),
             child: const Text(
-              'Login To Your Account',
+              loginto,
               style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
             ),
           ),
@@ -65,7 +66,7 @@ class _MyHomePageState extends State<MyHomePage> {
               controller: nameController,
               decoration: InputDecoration(
                   prefixIcon: const Icon(Icons.email),
-                  hintText: 'Email',
+                  hintText: hintemail,
                   border: OutlineInputBorder(
                       borderRadius: BorderRadius.circular(20))),
             ),
@@ -78,9 +79,9 @@ class _MyHomePageState extends State<MyHomePage> {
               controller: passwordController,
               decoration: InputDecoration(
                 prefixIcon: const Icon(Icons.lock),
-                hintText: 'Password',
+                hintText: hintpassword,
                 border:
-                OutlineInputBorder(borderRadius: BorderRadius.circular(20)),
+                    OutlineInputBorder(borderRadius: BorderRadius.circular(20)),
                 suffixIcon: GestureDetector(
                   onTap: () {
                     setState(() {
@@ -98,20 +99,18 @@ class _MyHomePageState extends State<MyHomePage> {
           Row(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              Container(
-                child: Checkbox(
-                  value: _value,
-                  shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(7)),
-                  onChanged: (value) {
-                    setState(() {
-                      _value = value!;
-                    });
-                  },
-                  activeColor: Colors.black,
-                ),
+              Checkbox(
+                value: _value,
+                shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(7)),
+                onChanged: (value) {
+                  setState(() {
+                    _value = value!;
+                  });
+                },
+                activeColor: Colors.black,
               ),
-              const Text('Remember me')
+              const Text(rememberme)
             ],
           ),
           const SizedBox(height: 10),
@@ -121,20 +120,20 @@ class _MyHomePageState extends State<MyHomePage> {
             child: ElevatedButton(
               style: ButtonStyle(
                   foregroundColor:
-                  MaterialStateProperty.all<Color>(Colors.white),
+                      MaterialStateProperty.all<Color>(Colors.white),
                   backgroundColor:
-                  MaterialStateProperty.all<Color>(Colors.black),
+                      MaterialStateProperty.all<Color>(Colors.black),
                   shape: MaterialStateProperty.all<RoundedRectangleBorder>(
                       RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(20),
-                      ))),
+                    borderRadius: BorderRadius.circular(20),
+                  ))),
               onPressed: () {
                 Navigator.push(
                   context,
                   MaterialPageRoute(builder: (context) => const HomeRoute()),
                 );
               },
-              child: const Text('Sign in'),
+              child: const Text(singin),
             ),
           ),
           const SizedBox(height: 10),
@@ -144,16 +143,10 @@ class _MyHomePageState extends State<MyHomePage> {
               child: const Padding(
                 padding: EdgeInsets.all(10),
                 child: Text(
-                  'Forgot the password?',
+                  forgotpassword,
                   style: TextStyle(color: Colors.black, fontSize: 16),
                 ),
               ),
-              // onTap: () {
-              //   Navigator.push(
-              //     context,
-              //     MaterialPageRoute(builder: (context) => const QuenmkRoute()),
-              //   );
-              // } ,
             ),
           ),
           const SizedBox(height: 30),
@@ -173,7 +166,7 @@ class _MyHomePageState extends State<MyHomePage> {
                 ),
               ),
               Text(
-                'or continue with',
+                orcontinue,
                 style: TextStyle(fontWeight: FontWeight.w100),
               ),
               Expanded(
@@ -224,11 +217,11 @@ class _MyHomePageState extends State<MyHomePage> {
             children: <Widget>[
               RichText(
                 text: TextSpan(
-                  text: 'Don\'t have an account?',
+                  text: haveanaccount,
                   style: DefaultTextStyle.of(context).style,
                   children: const <TextSpan>[
                     TextSpan(
-                        text: '  Sign up',
+                        text: singup,
                         style: TextStyle(
                             fontWeight: FontWeight.bold, fontSize: 16)),
                   ],
@@ -241,4 +234,3 @@ class _MyHomePageState extends State<MyHomePage> {
     );
   }
 }
-

@@ -8,7 +8,7 @@ class Anh {
       this.star,
       required this.icon,
       this.condition,
-        this.price,
+      this.price,
       this.isLike});
 
   bool? isLike;
@@ -91,67 +91,81 @@ class _SelectCard1State extends State<SelectCard1> {
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: () => showMaterialDialog(context, widget.anh.title),
-      child: Container(
-        child: Padding(
-          padding: const EdgeInsets.all(20.0),
-          child: Column(children: <Widget>[
-            Expanded(
-              child: Stack(
+      child: Padding(
+        padding: const EdgeInsets.all(20.0),
+        child: Column(children: <Widget>[
+          Expanded(
+            child: Stack(
+              children: [
+                Image.asset(
+                  widget.anh.icon,
+                  width: double.infinity,
+                  fit: BoxFit.fill,
+                ),
+                Container(
+                  alignment: Alignment.topRight,
+                  padding: const EdgeInsets.all(10),
+                  child: SizedBox(
+                    height: 20,
+                    child: GestureDetector(
+                      onTap: () {
+                        _setLike();
+                      },
+                      child: widget.anh.isLike == false
+                          ? Image.asset('assets/images/icons8-like-64.png')
+                          : Image.asset('assets/images/icons8-love-96.png'),
+                    ),
+                  ),
+                )
+              ],
+            ),
+          ),
+          Column(
+            children: <Widget>[
+              Row(
+                mainAxisAlignment: MainAxisAlignment.start,
+                children: [Text(widget.anh.title,style: const TextStyle(fontWeight: FontWeight.bold, fontSize: 16),)],
+              ),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.start,
                 children: [
-                  Image.asset(
-                    widget.anh.icon,
-                    width: double.infinity,
-                    fit: BoxFit.fill,
+                  const Icon(Icons.star_half),
+                  Text(widget.anh.star ?? ''),
+                  const SizedBox(
+                    width: 15,
                   ),
                   Container(
-                    alignment: Alignment.topRight,
-                    padding: const EdgeInsets.all(10),
-                    child: SizedBox(
-                      height: 20,
-                      child: GestureDetector(
-                        onTap: () {
-                          _setLike();
-                        },
-                        child: widget.anh.isLike == false
-                            ? Image.asset('assets/images/icons8-like-64.png')
-                            : Image.asset('assets/images/icons8-love-96.png'),
-                      ),
+                    height: 20,
+                    width: 1,
+                    color: Colors.black,
+                  ),
+                  const SizedBox(
+                    width: 15,
+                  ),
+                  Container(
+                    height: 30,
+                    padding: const EdgeInsets.all(5),
+                    decoration: const BoxDecoration(
+                      color: Colors.grey,
+                      borderRadius:  BorderRadius.all(Radius.circular(10))
                     ),
+                    child: Text(widget.anh.condition ?? ''),
                   )
+                  // Card(
+                  //
+                  //   color: Colors.white54,
+                  //   child: Text(widget.anh.condition ?? ''),
+                  // )
                 ],
               ),
-            ),
-            Column(
-              children: <Widget>[
-                Text(widget.anh.title),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    const Icon(Icons.star_half),
-                    Text(widget.anh.star ?? ''),
-                    const SizedBox(
-                      width: 15,
-                    ),
-                    Container(
-                      height: 20,
-                      width: 1,
-                      color: Colors.black,
-                    ),
-                    const SizedBox(
-                      width: 15,
-                    ),
-                    Card(
-                      color: Colors.white54,
-                      child: Text(widget.anh.condition ?? ''),
-                    )
-                  ],
-                ),
-                Text(widget.anh.price ?? ''),
-              ],
-            )
-            // Text(widget.anh.title),
-          ]),
-        ),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.start,
+                children: [Text(widget.anh.price ?? '')],
+              ),
+            ],
+          )
+          // Text(widget.anh.title),
+        ]),
       ),
     );
   }

@@ -98,18 +98,16 @@ class _MyHomePageState extends State<MyHomePage> {
           Row(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              Container(
-                child: Checkbox(
-                  value: _value,
-                  shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(7)),
-                  onChanged: (value) {
-                    setState(() {
-                      _value = value!;
-                    });
-                  },
-                  activeColor: Colors.black,
-                ),
+              Checkbox(
+                value: _value,
+                shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(7)),
+                onChanged: (value) {
+                  setState(() {
+                    _value = value!;
+                  });
+                },
+                activeColor: Colors.black,
               ),
               const Text('Remember me')
             ],
@@ -148,12 +146,6 @@ class _MyHomePageState extends State<MyHomePage> {
                   style: TextStyle(color: Colors.black, fontSize: 16),
                 ),
               ),
-              // onTap: () {
-              //   Navigator.push(
-              //     context,
-              //     MaterialPageRoute(builder: (context) => const QuenmkRoute()),
-              //   );
-              // } ,
             ),
           ),
           const SizedBox(height: 30),

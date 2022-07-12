@@ -23,12 +23,12 @@ class _MyBarState extends State<MyBar> {
           label: 'Orders',
         ),
         BottomNavigationBarItem(
-          icon: Icon(Icons.mark_chat_unread_outlined),
+          icon: Icon(Icons.chat_bubble),
           label: 'Chats',
         ),
         BottomNavigationBarItem(
-          icon: Icon(Icons.call),
-          label: 'Call',
+          icon: Icon(Icons.chat_bubble),
+          label: 'Chats',
         ),
       ],
       currentIndex: _selectedIndex,

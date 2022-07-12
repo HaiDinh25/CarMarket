@@ -1,19 +1,21 @@
+import 'package:car_market/const/string.dart';
+import 'package:car_market/home/itemlistview.dart';
 import 'package:car_market/home/navigationbar.dart';
 import 'package:car_market/home/selectcard.dart';
 import 'package:car_market/home/selectcard1.dart';
+import 'package:car_market/home/specialoffers.dart';
 import 'package:car_market/home/topdealseeall.dart';
 import 'package:flutter/material.dart';
-
-import '../dialog.dart';
-
 
 class HomeRoute extends StatelessWidget {
   const HomeRoute({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return const Scaffold(body: Home(),
-    bottomNavigationBar: MyBar(),);
+    return const Scaffold(
+      body: Home(),
+      bottomNavigationBar: MyBar(),
+    );
   }
 }
 
@@ -28,12 +30,12 @@ class _HomeState extends State<Home> {
   get decoration => null;
   TextEditingController nameController = TextEditingController();
   PageController controller = PageController();
-  final List<Widget> _list = <Widget>[
-    Image.asset('assets/images/anhlogin.jpg', fit: BoxFit.fill),
-    Image.asset('assets/images/icons8-like-64.png', fit: BoxFit.fill),
-    Image.asset('assets/images/oto1.jpg', fit: BoxFit.fill),
-    Image.asset('assets/images/oto1.jpg', fit: BoxFit.fill),
-    Image.asset('assets/images/icons8-like-64.png', fit: BoxFit.fill),
+  final List<String> _list = [
+    'assets/images/anhlogin.jpg',
+    'assets/images/icons8-like-64.png',
+    'assets/images/oto1.jpg',
+    'assets/images/oto1.jpg',
+    'assets/images/icons8-like-64.png',
   ];
 
   @override
@@ -59,9 +61,9 @@ class _HomeState extends State<Home> {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   mainAxisAlignment: MainAxisAlignment.start,
                   children: const <Widget>[
-                    Text('Good Morning'),
+                    Text(goodmorning),
                     Text(
-                      'Andrew Ainsley',
+                      name,
                       maxLines: 1,
                       overflow: TextOverflow.ellipsis,
                       style:
@@ -97,7 +99,7 @@ class _HomeState extends State<Home> {
               controller: nameController,
               decoration: InputDecoration(
                 prefixIcon: const Icon(Icons.search),
-                hintText: 'Search',
+                hintText: search,
                 hintStyle: const TextStyle(fontStyle: FontStyle.italic),
                 border: OutlineInputBorder(
                   borderRadius: BorderRadius.circular(20),
@@ -107,38 +109,58 @@ class _HomeState extends State<Home> {
               ),
             ),
           ),
-          Row(
-            children: <Widget>[
-              Container(
-                padding: const EdgeInsets.all(20),
-                child: const Text(
-                  'Special Offers',
-                  style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
-                ),
-              ),
-              Expanded(
-                child: Column(),
-              ),
-              Container(
-                padding: const EdgeInsets.all(20),
-                child: const Text(
-                  'See all',
-                  style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
-                ),
-              ),
-            ],
-          ),
+          _buildRowSeeAll(special, () {
+            Navigator.push(
+              context,
+              MaterialPageRoute(builder: (context) => const SpecialRoute()),
+            );
+          }),
+          // Row(
+          //   children: <Widget>[
+          //     Container(
+          //       padding: const EdgeInsets.all(20),
+          //       child: const Text(
+          //         'Special Offers',
+          //         style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+          //       ),
+          //     ),
+          //     Expanded(
+          //       child: Column(),
+          //     ),
+          //     Container(
+          //       padding: const EdgeInsets.all(20),
+          //       child: GestureDetector(
+          //         onTap: () {
+          //           Navigator.push(
+          //             context,
+          //             MaterialPageRoute(
+          //                 builder: (context) => const SpecialRoute()),
+          //           );
+          //         },
+          //         child: const Text(
+          //           seeAll,
+          //           style: TextStyle(fontWeight: FontWeight.bold, fontSize: 18),
+          //         ),
+          //       ),
+          //       // child: const Text(
+          //       //   'See all',
+          //       //   style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+          //       // ),
+          //     ),
+          //   ],
+          // ),
           Container(
               padding: const EdgeInsets.symmetric(horizontal: 10),
               height: 250,
               width: double.infinity,
-              child: PageView(
-                scrollDirection: Axis.horizontal,
-                controller: controller,
-                onPageChanged: (num) {
-                  setState(() {});
+              child: PageView.builder(
+                itemBuilder: (_, index) {
+                  return Image.asset(
+                    _list[index],
+                    fit: BoxFit.fill,
+                  );
                 },
-                children: _list,
+                itemCount: _list.length,
               )),
           const SizedBox(height: 20),
           GridView.builder(
@@ -156,42 +178,55 @@ class _HomeState extends State<Home> {
             physics: const NeverScrollableScrollPhysics(),
           ),
           const SizedBox(height: 20),
-          Row(
-            children: <Widget>[
-              Container(
-                padding: const EdgeInsets.all(20),
-                child: const Text(
-                  'Top Deals',
-                  style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
-                ),
-              ),
-              Expanded(
-                child: Column(),
-              ),
-              Container(
-                padding: const EdgeInsets.all(20),
-                child: GestureDetector(
-                  onTap: (){Navigator.push(
-                    context,
-                    MaterialPageRoute(builder: (context) => const SeeAllRoute()),
-                  );},
-                  child: const Text('See All', style: TextStyle(fontWeight: FontWeight.bold,fontSize: 18),),
-                ),
-                // child: const Text(
-                //   'See all',
-                //   style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
-                // ),
-              ),
-            ],
-          ),
-          SizedBox(
-            height: 60,
-            child: Container(
+          // Row(
+          //   children: <Widget>[
+          //     Container(
+          //       padding: const EdgeInsets.all(20),
+          //       child: const Text(
+          //         'Top Deals',
+          //         style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+          //       ),
+          //     ),
+          //     Expanded(
+          //       child: Column(),
+          //     ),
+          //     Container(
+          //       padding: const EdgeInsets.all(20),
+          //       child: GestureDetector(
+          //         onTap: () {
+          //           Navigator.push(
+          //             context,
+          //             MaterialPageRoute(
+          //                 builder: (context) => const SeeAllRoute()),
+          //           );
+          //         },
+          //         child: const Text(
+          //           seeAll,
+          //           style: TextStyle(fontWeight: FontWeight.bold, fontSize: 18),
+          //         ),
+          //       ),
+          //       // child: const Text(
+          //       //   'See all',
+          //       //   style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+          //       // ),
+          //     ),
+          //   ],
+          // ),
+          _buildRowSeeAll(topDeal, () {
+            Navigator.push(
+              context,
+              MaterialPageRoute(builder: (context) => const SeeAllRoute()),
+            );
+          }),
+          Container(
+            padding: const EdgeInsets.all(20),
+            child: SizedBox(
+              height: 46,
               child: ListView.builder(
                 itemBuilder: (context, index) {
-                  return _buildItemListView(topDeals[index]);
+                  return buildItemListView(topdeals: text[index]);
                 },
-                itemCount: topDeals.length,
+                itemCount: text.length,
                 shrinkWrap: true,
                 scrollDirection: Axis.horizontal,
               ),
@@ -214,31 +249,32 @@ class _HomeState extends State<Home> {
         ],
       ),
     );
-
   }
 
-  Widget _buildItemListView(String text) {
-    return GestureDetector(
-      onTap: () {
-        showMaterialDialog(context, text);
-      },
-      child: Container(
-        padding: const EdgeInsets.all(20),
-        child: Text(
-          text,
-          style: const TextStyle(fontSize: 18),
+  Widget _buildRowSeeAll(String title, VoidCallback callbackSeeAll) {
+    return Row(
+      children: <Widget>[
+        Container(
+          padding: const EdgeInsets.all(20),
+          child: Text(
+            title,
+            style: const TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+          ),
         ),
-      ),
+        Expanded(
+          child: Column(),
+        ),
+        Container(
+          padding: const EdgeInsets.all(20),
+          child: GestureDetector(
+            onTap: callbackSeeAll,
+            child: const Text(
+              seeAll,
+              style: TextStyle(fontWeight: FontWeight.bold, fontSize: 18),
+            ),
+          ),
+        ),
+      ],
     );
   }
-
-  List<String> topDeals = [
-    'All',
-    'BMW',
-    'Mescedes',
-    'Tesla',
-    'BMW',
-    'Poscher',
-    'Vinfast'
-  ];
 }

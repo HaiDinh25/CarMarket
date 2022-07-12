@@ -11,13 +11,13 @@ void showMaterialDialog(BuildContext context, String text) {
                 onPressed: () {
                   Navigator.of(context).pop();
                 },
-                child: Text('Close')),
+                child: const Text('Close')),
             TextButton(
               onPressed: () {
                 print('HelloWorld!');
                 Navigator.of(context).pop();
               },
-              child: Text('OK'),
+              child: const Text('OK'),
             )
           ],
         );
