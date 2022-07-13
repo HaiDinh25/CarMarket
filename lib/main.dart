@@ -1,4 +1,4 @@
-import 'package:car_market/home/home.dart';
+import 'package:car_market/home/screena.dart';
 import 'package:flutter/material.dart';
 
 void main() {
@@ -38,8 +38,7 @@ class _MyHomePageState extends State<MyHomePage> {
 
   @override
   Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.all(10),
+    return SafeArea(
       child: ListView(
         children: <Widget>[
           const SizedBox(
@@ -129,7 +128,7 @@ class _MyHomePageState extends State<MyHomePage> {
               onPressed: () {
                 Navigator.push(
                   context,
-                  MaterialPageRoute(builder: (context) => const HomeRoute()),
+                  MaterialPageRoute(builder: (context) => const ScreenA()),
                 );
               },
               child: const Text('Sign in'),

@@ -1,5 +1,5 @@
 import 'package:car_market/const/string.dart';
-import 'package:car_market/home/home.dart';
+import 'package:car_market/home/screena.dart';
 import 'package:flutter/material.dart';
 
 class SpecialRoute extends StatelessWidget {
@@ -21,12 +21,9 @@ class Special extends StatefulWidget {
 class _SpecialState extends State<Special> {
   @override
   Widget build(BuildContext context) {
-    return SingleChildScrollView(
+    return SafeArea(
       child: Column(
         children: <Widget>[
-          const SizedBox(
-            height: 50,
-          ),
           Row(
             children: <Widget>[
               Container(
@@ -37,11 +34,10 @@ class _SpecialState extends State<Special> {
                   onTap: () {
                     Navigator.push(
                       context,
-                      MaterialPageRoute(
-                          builder: (context) => const HomeRoute()),
+                      MaterialPageRoute(builder: (context) => const ScreenA()),
                     );
                   },
-                  child: const Icon(Icons.arrow_back),
+                  child: Image.asset('assets/images/icons8-left-96.png'),
                 ),
               ),
               const Expanded(
@@ -51,14 +47,95 @@ class _SpecialState extends State<Special> {
                 ),
               ),
               Container(
-                  padding: const EdgeInsets.all(10),
-                  child: GestureDetector(
-                      onTap: () {}, child: const Icon(Icons.search))),
+                width: 70,
+                padding: const EdgeInsets.all(20),
+                child: GestureDetector(
+                  onTap: () {},
+                  child: Image.asset('assets/images/icons8-view-more-100.png'),
+                ),
+              ),
               const SizedBox(width: 10),
             ],
           ),
+          Expanded(
+              child: SingleChildScrollView(
+            child: Column(
+              children: <Widget>[
+                Container(
+                    padding: const EdgeInsets.symmetric(horizontal: 20),
+                    height: 250,
+                    width: double.infinity,
+                    child: PageView.builder(
+                      itemBuilder: (_, index) {
+                        return Image.asset(
+                          _list1[index],
+                          fit: BoxFit.fill,
+                        );
+                      },
+                      itemCount: _list1.length,
+                    )),
+                const SizedBox(height: 20),
+                Container(
+                    padding: const EdgeInsets.symmetric(horizontal: 20),
+                    height: 250,
+                    width: double.infinity,
+                    child: PageView.builder(
+                      itemBuilder: (_, index) {
+                        return Image.asset(
+                          _list2[index],
+                          fit: BoxFit.fill,
+                        );
+                      },
+                      itemCount: _list2.length,
+                    )),
+                const SizedBox(height: 20),
+                Container(
+                    padding: const EdgeInsets.symmetric(horizontal: 20),
+                    height: 250,
+                    width: double.infinity,
+                    child: PageView.builder(
+                      itemBuilder: (_, index) {
+                        return Image.asset(
+                          _list2[index],
+                          fit: BoxFit.fill,
+                        );
+                      },
+                      itemCount: _list2.length,
+                    )),
+                const SizedBox(height: 20),
+                Container(
+                    padding: const EdgeInsets.symmetric(horizontal: 20),
+                    height: 250,
+                    width: double.infinity,
+                    child: PageView.builder(
+                      itemBuilder: (_, index) {
+                        return Image.asset(
+                          _list2[index],
+                          fit: BoxFit.fill,
+                        );
+                      },
+                      itemCount: _list2.length,
+                    )),
+              ],
+            ),
+          ))
         ],
       ),
     );
   }
 }
+
+List<String> _list1 = [
+  "assets/images/anhlogin.jpg",
+  'assets/images/icons8-like-64.png',
+  'assets/images/oto1.jpg',
+  'assets/images/oto1.jpg',
+  'assets/images/icons8-like-64.png',
+];
+List<String> _list2 = [
+  "assets/images/anhlogin.jpg",
+  'assets/images/icons8-like-64.png',
+  'assets/images/oto1.jpg',
+  'assets/images/oto1.jpg',
+  'assets/images/icons8-like-64.png',
+];

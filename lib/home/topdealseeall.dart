@@ -1,8 +1,9 @@
 import 'package:car_market/const/string.dart';
-import 'package:car_market/home/home.dart';
 import 'package:car_market/home/itemlistview.dart';
-import 'package:car_market/home/selectcard1.dart';
+import 'package:car_market/home/listtopdeals.dart';
+import 'package:car_market/home/screena.dart';
 import 'package:flutter/material.dart';
+
 
 class SeeAllRoute extends StatefulWidget {
   const SeeAllRoute({super.key});
@@ -26,6 +27,7 @@ class SeeAll extends StatefulWidget {
 }
 
 class _SeeAllState extends State<SeeAll> {
+
   @override
   Widget build(BuildContext context) {
     return SafeArea(
@@ -36,15 +38,15 @@ class _SeeAllState extends State<SeeAll> {
             Container(
               alignment: Alignment.center,
               padding: const EdgeInsets.all(20),
-              width: 56,
+              width: 70,
               child: GestureDetector(
                 onTap: () {
                   Navigator.push(
                     context,
-                    MaterialPageRoute(builder: (context) => const HomeRoute()),
+                    MaterialPageRoute(builder: (context) => const ScreenA()),
                   );
                 },
-                child: const Icon(Icons.arrow_back),
+                child: Image.asset('assets/images/icons8-left-96.png'),
               ),
             ),
             const Expanded(
@@ -54,9 +56,13 @@ class _SeeAllState extends State<SeeAll> {
               ),
             ),
             Container(
-                padding: const EdgeInsets.all(10),
-                child: GestureDetector(
-                    onTap: () {}, child: const Icon(Icons.search))),
+              width: 70,
+              padding: const EdgeInsets.all(20),
+              child: GestureDetector(
+                onTap: () {},
+                child: Image.asset('assets/images/icons8-search-64.png'),
+              ),
+            ),
             const SizedBox(width: 10),
           ],
         ),
@@ -84,9 +90,9 @@ class _SeeAllState extends State<SeeAll> {
               // mainAxisExtent: 100,
             ),
             itemBuilder: (context, index) {
-              return SelectCard1(anh: images[index]);
+              return listTopDeals(anh: images1[index]);
             },
-            itemCount: images.length,
+            itemCount: images1.length,
             shrinkWrap: true,
           ),
         ),
@@ -94,3 +100,5 @@ class _SeeAllState extends State<SeeAll> {
     ));
   }
 }
+
+
