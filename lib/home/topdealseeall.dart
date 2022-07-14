@@ -1,7 +1,7 @@
 import 'package:car_market/const/string.dart';
 import 'package:car_market/home/itemlistview.dart';
 import 'package:car_market/home/listtopdeals.dart';
-import 'package:car_market/home/screena.dart';
+import 'package:car_market/navigatorbar/screena.dart';
 import 'package:flutter/material.dart';
 
 

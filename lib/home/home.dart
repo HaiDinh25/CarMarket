@@ -90,8 +90,8 @@ class _HomeScreenState extends State<HomeScreen> {
                 border: OutlineInputBorder(
                   borderRadius: BorderRadius.circular(20),
                 ),
-                suffixIcon: GestureDetector(
-                    child: const Icon(Icons.import_export)),
+                suffixIcon:
+                    GestureDetector(child: const Icon(Icons.import_export)),
               ),
             ),
           ),
@@ -106,40 +106,6 @@ class _HomeScreenState extends State<HomeScreen> {
                         builder: (context) => const SpecialRoute()),
                   );
                 }),
-                // Row(
-                //   children: <Widget>[
-                //     Container(
-                //       padding: const EdgeInsets.all(20),
-                //       child: const Text(
-                //         'Special Offers',
-                //         style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
-                //       ),
-                //     ),
-                //     Expanded(
-                //       child: Column(),
-                //     ),
-                //     Container(
-                //       padding: const EdgeInsets.all(20),
-                //       child: GestureDetector(
-                //         onTap: () {
-                //           Navigator.push(
-                //             context,
-                //             MaterialPageRoute(
-                //                 builder: (context) => const SpecialRoute()),
-                //           );
-                //         },
-                //         child: const Text(
-                //           seeAll,
-                //           style: TextStyle(fontWeight: FontWeight.bold, fontSize: 18),
-                //         ),
-                //       ),
-                //       // child: const Text(
-                //       //   'See all',
-                //       //   style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
-                //       // ),
-                //     ),
-                //   ],
-                // ),
                 Container(
                     padding: const EdgeInsets.symmetric(horizontal: 10),
                     height: 250,
@@ -169,40 +135,6 @@ class _HomeScreenState extends State<HomeScreen> {
                   physics: const NeverScrollableScrollPhysics(),
                 ),
                 const SizedBox(height: 20),
-                // Row(
-                //   children: <Widget>[
-                //     Container(
-                //       padding: const EdgeInsets.all(20),
-                //       child: const Text(
-                //         'Top Deals',
-                //         style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
-                //       ),
-                //     ),
-                //     Expanded(
-                //       child: Column(),
-                //     ),
-                //     Container(
-                //       padding: const EdgeInsets.all(20),
-                //       child: GestureDetector(
-                //         onTap: () {
-                //           Navigator.push(
-                //             context,
-                //             MaterialPageRoute(
-                //                 builder: (context) => const SeeAllRoute()),
-                //           );
-                //         },
-                //         child: const Text(
-                //           seeAll,
-                //           style: TextStyle(fontWeight: FontWeight.bold, fontSize: 18),
-                //         ),
-                //       ),
-                //       // child: const Text(
-                //       //   'See all',
-                //       //   style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
-                //       // ),
-                //     ),
-                //   ],
-                // ),
                 _buildRowSeeAll(topDeal, () {
                   Navigator.push(
                     context,

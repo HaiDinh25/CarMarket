@@ -1,4 +1,4 @@
-import 'package:car_market/home/screena.dart';
+import 'package:car_market/navigatorbar/screena.dart';
 import 'package:flutter/material.dart';
 
 void main() {
