@@ -2,7 +2,19 @@ import 'package:car_market/const/string.dart';
 import 'package:car_market/login/login.dart';
 import 'package:car_market/profile/editprofile.dart';
 import 'package:flutter/material.dart';
+class ProfilesPage extends StatefulWidget {
+  const ProfilesPage({super.key});
 
+  @override
+  State<ProfilesPage> createState() => _ProfilesPageState();
+
+}
+class _ProfilesPageState extends State<ProfilesPage> {
+  @override
+  Widget build(BuildContext context) {
+    return const Scaffold(body: Profiles());
+  }
+}
 class Profiles extends StatefulWidget {
   const Profiles({Key? key}) : super(key: key);
 

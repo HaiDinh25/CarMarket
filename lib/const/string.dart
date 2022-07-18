@@ -34,3 +34,4 @@ const String helpcenter = 'Help Center';
 const String invitefriend = 'Invite friend';
 const String logout = 'Logout';
 const String wallet = 'My E-Wallet';
+const String transaction = 'Transaction History';

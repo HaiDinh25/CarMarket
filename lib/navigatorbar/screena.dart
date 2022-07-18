@@ -1,7 +1,7 @@
 import 'package:car_market/home/home.dart';
 import 'package:car_market/navigatorbar/orders.dart';
 import 'package:car_market/profile/profile.dart';
-import 'package:car_market/navigatorbar/wallet.dart';
+import 'package:car_market/wallet/wallet.dart';
 import 'package:flutter/material.dart';
 
 class ScreenA extends StatefulWidget {
