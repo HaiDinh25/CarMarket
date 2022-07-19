@@ -31,6 +31,7 @@ class _EditProfileState extends State<EditProfile> {
   TextEditingController countryController = TextEditingController();
   TextEditingController phoneController = TextEditingController();
   TextEditingController maleController = TextEditingController();
+  int selectedValue = 1;
 
   @override
   void dispose() {
@@ -104,18 +105,18 @@ class _EditProfileState extends State<EditProfile> {
                         hintText: 'Date of Birth',
                         border: OutlineInputBorder(
                             borderRadius: BorderRadius.circular(16)),
-                    suffixIcon: GestureDetector(
-
-                      onTap: () async {
-                        var date =  await showDatePicker(
-                            context: context,
-                            initialDate:DateTime.now(),
-                            firstDate:DateTime(1900),
-                            lastDate: DateTime(2100));
-                        dateController.text = date.toString().substring(0,10);
-                      },
-                      child: const Icon(Icons.date_range),
-                    )),
+                        suffixIcon: GestureDetector(
+                          onTap: () async {
+                            var date = await showDatePicker(
+                                context: context,
+                                initialDate: DateTime.now(),
+                                firstDate: DateTime(1900),
+                                lastDate: DateTime(2100));
+                            dateController.text =
+                                date.toString().substring(0, 10);
+                          },
+                          child: const Icon(Icons.date_range),
+                        )),
                   ),
                 ),
                 Container(
@@ -127,7 +128,8 @@ class _EditProfileState extends State<EditProfile> {
                         border: OutlineInputBorder(
                             borderRadius: BorderRadius.circular(16))),
                   ),
-                ),Container(
+                ),
+                Container(
                   padding: const EdgeInsets.all(20),
                   child: TextField(
                     controller: countryController,
@@ -147,14 +149,59 @@ class _EditProfileState extends State<EditProfile> {
                             borderRadius: BorderRadius.circular(16))),
                   ),
                 ),
-                Container(
+
+                Padding(
                   padding: const EdgeInsets.all(20),
-                  child: TextField(
-                    controller: maleController,
-                    decoration: InputDecoration(
-                        hintText: 'Male',
-                        border: OutlineInputBorder(
-                            borderRadius: BorderRadius.circular(16))),
+                  child: Container(
+                    decoration: BoxDecoration(
+                        border: Border.all(color: Colors.grey),
+                        borderRadius: const BorderRadius.all(Radius.circular(16))),
+                    width: double.infinity,
+                    padding: const EdgeInsets.fromLTRB(20, 5, 20, 5),
+                    child: DropdownButton(
+                      isExpanded: true,
+                      value: selectedValue,
+                      underline: Container( color: Colors.transparent,),
+                      items: const [
+                        DropdownMenuItem(
+                          value: 1,
+                          child: Text("Male"),
+                        ),
+                        DropdownMenuItem(
+                          value: 2,
+                          child: Text("Female"),
+                        ),
+                        DropdownMenuItem(value: 3, child: Text("Others")),
+                      ],
+                      onChanged: (int? value) {
+                        setState(() {
+                          selectedValue = value!;
+                        });
+                      },
+                    ),
+                  ),
+                ),
+                Container(
+                  height: 100,
+                  width: double.infinity,
+                  padding: const EdgeInsets.all(20),
+                  child: ElevatedButton(
+                    style: ButtonStyle(
+                        foregroundColor:
+                        MaterialStateProperty.all<Color>(Colors.white),
+                        backgroundColor:
+                        MaterialStateProperty.all<Color>(Colors.black),
+                        shape: MaterialStateProperty.all<RoundedRectangleBorder>(
+                            RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(20),
+                            ))),
+                    onPressed: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(builder: (context) => const ProfilesPage()),
+                      );
+                    },
+                    child: const Text('Update', style: TextStyle(fontWeight: FontWeight.bold, fontSize: 18),),
                   ),
                 ),
               ],

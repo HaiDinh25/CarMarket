@@ -1,20 +1,25 @@
 import 'package:car_market/const/string.dart';
 import 'package:car_market/login/login.dart';
 import 'package:car_market/profile/editprofile.dart';
+import 'package:car_market/profile/notification.dart';
+import 'package:car_market/profile/payment.dart';
+import 'package:car_market/profile/security.dart';
 import 'package:flutter/material.dart';
+
 class ProfilesPage extends StatefulWidget {
   const ProfilesPage({super.key});
 
   @override
   State<ProfilesPage> createState() => _ProfilesPageState();
-
 }
+
 class _ProfilesPageState extends State<ProfilesPage> {
   @override
   Widget build(BuildContext context) {
     return const Scaffold(body: Profiles());
   }
 }
+
 class Profiles extends StatefulWidget {
   const Profiles({Key? key}) : super(key: key);
 
@@ -23,6 +28,8 @@ class Profiles extends StatefulWidget {
 }
 
 class _ProfilesState extends State<Profiles> {
+  bool isSwitched = false;
+
   @override
   Widget build(BuildContext context) {
     return SafeArea(
@@ -144,21 +151,21 @@ class _ProfilesState extends State<Profiles> {
                     callback: () => Navigator.push(
                         context,
                         MaterialPageRoute(
-                            builder: (context) => const EditProfilePage()))),
+                            builder: (context) => const NotificationPage()))),
                 _itemMenu(
                     icon: 'assets/images/icons8-wallet-64.png',
                     title: payment,
                     callback: () => Navigator.push(
                         context,
                         MaterialPageRoute(
-                            builder: (context) => const EditProfilePage()))),
+                            builder: (context) => const PaymentPage()))),
                 _itemMenu(
                     icon: 'assets/images/icons8-security-lock-100.png',
                     title: security,
                     callback: () => Navigator.push(
                         context,
                         MaterialPageRoute(
-                            builder: (context) => const EditProfilePage()))),
+                            builder: (context) => const SecurityPage()))),
                 _itemMenu(
                     icon: 'assets/images/icons8-language-100.png',
                     title: language,
@@ -166,13 +173,37 @@ class _ProfilesState extends State<Profiles> {
                         context,
                         MaterialPageRoute(
                             builder: (context) => const EditProfilePage()))),
-                _itemMenu(
-                    icon: 'assets/images/icons8-eye-96.png',
-                    title: darkmode,
-                    callback: () => Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                            builder: (context) => const EditProfilePage()))),
+                Container(
+                  child: Row(
+                    children: <Widget>[
+                      Container(
+                        alignment: Alignment.center,
+                        padding: const EdgeInsets.all(20),
+                        width: 70,
+                        child: Image.asset('assets/images/icons8-eye-96.png'),
+                      ),
+                      Expanded(
+                        child: Container(
+                          alignment: Alignment.centerLeft,
+                          padding: const EdgeInsets.all(20),
+                          child: const Text(
+                            darkmode,
+                            style: TextStyle(
+                                fontSize: 18, fontWeight: FontWeight.w500),
+                          ),
+                        ),
+                      ),
+                      Switch(
+                        value: isSwitched,
+                        onChanged: (value) {
+                          setState(() {
+                            isSwitched = value;
+                          });
+                        },
+                      ),
+                    ],
+                  ),
+                ),
                 _itemMenu(
                     icon: 'assets/images/icons8-lock-100.png',
                     title: privacipolicy,
