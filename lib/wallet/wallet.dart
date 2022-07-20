@@ -10,14 +10,15 @@ class WalletPage extends StatefulWidget {
 
   @override
   State<WalletPage> createState() => _WalletPageState();
-
 }
+
 class _WalletPageState extends State<WalletPage> {
   @override
   Widget build(BuildContext context) {
     return const Scaffold(body: Wallet());
   }
 }
+
 class Wallet extends StatefulWidget {
   const Wallet({Key? key}) : super(key: key);
 
@@ -74,91 +75,83 @@ class _WalletState extends State<Wallet> {
             child: Column(
               children: <Widget>[
                 Container(
+                  height: 250,
+                  width: double.infinity,
                   padding: const EdgeInsets.all(20),
                   child: Stack(
                     children: [
                       ClipRRect(
-                        borderRadius: BorderRadius.circular(10),
+                        borderRadius: BorderRadius.circular(20),
                         child: Image.asset(
                           'assets/images/backgrounds.jpg',
                           fit: BoxFit.fill,
+                          width: double.infinity,
                         ),
                       ),
-                      Expanded(
+                      Container(
+                        padding: const EdgeInsets.all(30),
                         child: Column(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: [
                             Row(
                               children: <Widget>[
-                                Container(
-                                  padding: const EdgeInsets.all(40),
-                                  child: Column(
-                                    children: const <Widget>[
-                                      Text(
-                                        name,
+                                Column(
+                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                  children: const <Widget>[
+                                    Text(
+                                      name,
+                                      style: TextStyle(
+                                          color: Colors.white,
+                                          fontSize: 18,
+                                          fontWeight: FontWeight.bold),
+                                    ),
+                                    Text('**** **** **** 5124',
                                         style: TextStyle(
-                                            color: Colors.white,
-                                            fontSize: 18,
-                                            fontWeight: FontWeight.bold),
-                                      ),
-                                      Text('**** **** **** 5124',
-                                          style: TextStyle(
-                                              color: Colors.white,
-                                              fontSize: 16)),
-                                    ],
-                                  ),
+                                            color: Colors.white, fontSize: 16)),
+                                  ],
                                 ),
-                                Container(
-                                  padding:
-                                      const EdgeInsets.fromLTRB(3, 0, 3, 0),
+                                const Spacer(),
+                                SizedBox(
                                   width: 60,
                                   child: Image.asset(
                                       'assets/images/credit-cards-logo-png-visa-debit-card-payment-credit-card-visa-transparent-background-800x450.jpg'),
                                 ),
-                                Container(
-                                  padding:
-                                      const EdgeInsets.fromLTRB(3, 0, 3, 0),
+                                SizedBox(
                                   width: 50,
                                   child: Image.asset(
                                       'assets/images/icons8-mastercard-logo-96.png'),
                                 ),
-                                const SizedBox(
-                                  width: 20,
-                                )
                               ],
                             ),
                             Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
                               children: <Widget>[
-                                Container(
-                                  padding: const EdgeInsets.fromLTRB(
-                                      40, 10, 62, 20),
-                                  child: Column(
-                                    children: const <Widget>[
-                                      Text(
-                                        'Your balance',
+                                Column(
+                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                  children: const <Widget>[
+                                    Text(
+                                      'Your Balance',
+                                      style: TextStyle(
+                                          color: Colors.white,
+                                          fontSize: 16,
+                                          fontWeight: FontWeight.bold),
+                                    ),
+                                    Text('\$200.68',
                                         style: TextStyle(
                                             color: Colors.white,
-                                            fontSize: 14,
-                                            fontWeight: FontWeight.bold),
-                                      ),
-                                      Text('\$200.84',
-                                          style: TextStyle(
-                                              color: Colors.white,
-                                              fontSize: 30,
-                                              fontWeight: FontWeight.bold)),
-                                    ],
-                                  ),
+                                            fontSize: 30,
+                                            fontWeight: FontWeight.bold)),
+                                  ],
                                 ),
                                 GestureDetector(
                                   onTap: () {
                                     showMaterialDialog(context, 'hello');
                                   },
                                   child: Container(
-                                    alignment: Alignment.center,
                                     margin: const EdgeInsets.only(right: 0),
                                     decoration: BoxDecoration(
                                         color: Colors.white,
-                                        border:
-                                            Border.all(color: Colors.black),
+                                        border: Border.all(color: Colors.black),
                                         borderRadius: const BorderRadius.all(
                                             Radius.circular(17))),
                                     padding: const EdgeInsets.all(10),
@@ -189,10 +182,9 @@ class _WalletState extends State<Wallet> {
                 ),
                 _buildRowSeeAll(transaction, () {
                   Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                        builder: (context) => const SeeAllWalletPage()),
-                  );
+                      context,
+                      MaterialPageRoute(
+                          builder: (context) => const SeeAllWalletPage()));
                 }),
                 _itemMenu(
                     icon: 'assets/images/bmwi8.jpg',
@@ -284,50 +276,47 @@ class _WalletState extends State<Wallet> {
       required String title,
       required String time,
       required String price,
-        required String icon2,
+      required String icon2,
       VoidCallback? callback}) {
     return InkWell(
       onTap: callback,
-      child: Row(
-        children: <Widget>[
-          const SizedBox(
-            width: 20,
-          ),
-          Container(
-            height: 50,
-            width: 50,
-            padding: const EdgeInsets.all(5),
-            decoration: BoxDecoration(
-                color: Colors.blueGrey.shade100,
-                borderRadius: const BorderRadius.all(Radius.circular(100))),
-            child: ClipRRect(
-              borderRadius: BorderRadius.circular(100),
-              child: Image.asset(
-                icon,
-                fit: BoxFit.fill,
+      child: Container(
+        padding: const EdgeInsets.all(20),
+        child: Row(
+          children: <Widget>[
+            Container(
+              height: 50,
+              width: 50,
+              padding: const EdgeInsets.all(5),
+              decoration: BoxDecoration(
+                  color: Colors.blueGrey.shade100,
+                  borderRadius: const BorderRadius.all(Radius.circular(100))),
+              child: ClipRRect(
+                borderRadius: BorderRadius.circular(100),
+                child: Image.asset(
+                  icon,
+                  fit: BoxFit.fill,
+                ),
               ),
             ),
-          ),
-          Expanded(
-            child: Container(
-              padding: const EdgeInsets.all(20),
-              alignment: Alignment.centerLeft,
-              child: Column(
-                children: [
-                  Text(
-                    title,
-                    style: const TextStyle(
-                        fontSize: 18, fontWeight: FontWeight.w500),
-                  ),
-                  Text(time)
-                ],
+            Expanded(
+              child: Container(
+                padding: const EdgeInsets.fromLTRB(20, 0, 0, 0),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Text(
+                      title,
+                      style: const TextStyle(
+                          fontSize: 18, fontWeight: FontWeight.w500),
+                    ),
+                    Text(time)
+                  ],
+                ),
               ),
             ),
-          ),
-          Container(
-            padding: const EdgeInsets.all(20),
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.start,
+            Column(
+              crossAxisAlignment: CrossAxisAlignment.end,
               children: [
                 Text(
                   price,
@@ -335,21 +324,19 @@ class _WalletState extends State<Wallet> {
                       fontSize: 18, fontWeight: FontWeight.w500),
                 ),
                 Row(
-                  mainAxisAlignment: MainAxisAlignment.end,
                   children: <Widget>[
                     Text(time),
                     Container(
                       padding: const EdgeInsets.fromLTRB(3, 0, 3, 0),
                       width: 20,
-                      child:
-                          Image.asset(icon2),
+                      child: Image.asset(icon2),
                     ),
                   ],
                 )
               ],
-            ),
-          )
-        ],
+            )
+          ],
+        ),
       ),
     );
   }

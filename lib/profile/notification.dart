@@ -56,11 +56,7 @@ class _NotificationState extends State<Notification> {
                 width: 70,
                 child: GestureDetector(
                   onTap: () {
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                          builder: (context) => const ProfilesPage()),
-                    );
+                    Navigator.pop(context);
                   },
                   child: Image.asset('assets/images/icons8-left-96.png'),
                 ),
@@ -100,7 +96,7 @@ class _NotificationState extends State<Notification> {
             alignment: Alignment.centerLeft,
             padding: const EdgeInsets.all(20),
             child: Text(
-              menu!.title ?? '',
+              menu!.title,
               style: const TextStyle(fontSize: 18, fontWeight: FontWeight.w500),
             ),
           ),

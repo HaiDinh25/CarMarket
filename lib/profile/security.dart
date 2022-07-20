@@ -48,11 +48,7 @@ class _SecurityState extends State<Security> {
                 width: 70,
                 child: GestureDetector(
                   onTap: () {
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                          builder: (context) => const ProfilesPage()),
-                    );
+                    Navigator.pop(context);
                   },
                   child: Image.asset('assets/images/icons8-left-96.png'),
                 ),
@@ -60,7 +56,7 @@ class _SecurityState extends State<Security> {
               const Expanded(
                 child: Text(
                   security,
-                  style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+                  style: TextStyle(fontSize: 22, fontWeight: FontWeight.bold),
                 ),
               ),
             ],
@@ -86,7 +82,7 @@ class _SecurityState extends State<Security> {
                         padding: const EdgeInsets.fromLTRB(20, 0, 0, 0),
                         alignment: Alignment.centerLeft,
                         child: const Text(
-                          'Goooooo',
+                          'Google Authenticator',
                           style: TextStyle(
                               fontSize: 18, fontWeight: FontWeight.w500),
                         ),
@@ -111,10 +107,10 @@ class _SecurityState extends State<Security> {
                       foregroundColor:
                       MaterialStateProperty.all<Color>(Colors.black),
                       backgroundColor:
-                      MaterialStateProperty.all<Color>(Colors.grey),
+                      MaterialStateProperty.all<Color>(Colors.white38),
                       shape: MaterialStateProperty.all<RoundedRectangleBorder>(
                           RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(20),
+                            borderRadius: BorderRadius.circular(30),
                           ))),
                   onPressed: () {
                     Navigator.push(
@@ -122,7 +118,7 @@ class _SecurityState extends State<Security> {
                       MaterialPageRoute(builder: (context) => const ProfilesPage()),
                     );
                   },
-                  child: const Text('Change Pin', style: TextStyle(fontWeight: FontWeight.w500, fontSize: 18),),
+                  child: const Text('Change Pin', style: TextStyle(fontSize: 18),),
                 ),
               ),
               Container(
@@ -134,10 +130,10 @@ class _SecurityState extends State<Security> {
                       foregroundColor:
                       MaterialStateProperty.all<Color>(Colors.black),
                       backgroundColor:
-                      MaterialStateProperty.all<Color>(Colors.grey),
+                      MaterialStateProperty.all<Color>(Colors.white38),
                       shape: MaterialStateProperty.all<RoundedRectangleBorder>(
                           RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(20),
+                            borderRadius: BorderRadius.circular(30),
                           ))),
                   onPressed: () {
                     Navigator.push(
@@ -145,7 +141,7 @@ class _SecurityState extends State<Security> {
                       MaterialPageRoute(builder: (context) => const ProfilesPage()),
                     );
                   },
-                  child: const Text('Change Password', style: TextStyle(fontWeight: FontWeight.w500, fontSize: 18),),
+                  child: const Text('Change Password', style: TextStyle( fontSize: 18),),
                 ),
               ),
             ],
@@ -163,7 +159,7 @@ class _SecurityState extends State<Security> {
             alignment: Alignment.centerLeft,
             padding: const EdgeInsets.all(20),
             child: Text(
-              menu!.title ?? '',
+              menu!.title,
               style: const TextStyle(fontSize: 18, fontWeight: FontWeight.w500),
             ),
           ),

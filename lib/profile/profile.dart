@@ -1,6 +1,8 @@
 import 'package:car_market/const/string.dart';
 import 'package:car_market/login/login.dart';
 import 'package:car_market/profile/editprofile.dart';
+import 'package:car_market/profile/invitefriend.dart';
+import 'package:car_market/profile/language.dart';
 import 'package:car_market/profile/notification.dart';
 import 'package:car_market/profile/payment.dart';
 import 'package:car_market/profile/security.dart';
@@ -72,7 +74,7 @@ class _ProfilesState extends State<Profiles> {
               child: SingleChildScrollView(
             child: Column(
               children: <Widget>[
-                Container(
+                SizedBox(
                   height: 130,
                   width: 130,
                   child: Stack(
@@ -172,37 +174,35 @@ class _ProfilesState extends State<Profiles> {
                     callback: () => Navigator.push(
                         context,
                         MaterialPageRoute(
-                            builder: (context) => const EditProfilePage()))),
-                Container(
-                  child: Row(
-                    children: <Widget>[
-                      Container(
-                        alignment: Alignment.center,
+                            builder: (context) => const LanguagePage()))),
+                Row(
+                  children: <Widget>[
+                    Container(
+                      alignment: Alignment.center,
+                      padding: const EdgeInsets.all(20),
+                      width: 70,
+                      child: Image.asset('assets/images/icons8-eye-96.png'),
+                    ),
+                    Expanded(
+                      child: Container(
+                        alignment: Alignment.centerLeft,
                         padding: const EdgeInsets.all(20),
-                        width: 70,
-                        child: Image.asset('assets/images/icons8-eye-96.png'),
-                      ),
-                      Expanded(
-                        child: Container(
-                          alignment: Alignment.centerLeft,
-                          padding: const EdgeInsets.all(20),
-                          child: const Text(
-                            darkmode,
-                            style: TextStyle(
-                                fontSize: 18, fontWeight: FontWeight.w500),
-                          ),
+                        child: const Text(
+                          darkmode,
+                          style: TextStyle(
+                              fontSize: 18, fontWeight: FontWeight.w500),
                         ),
                       ),
-                      Switch(
-                        value: isSwitched,
-                        onChanged: (value) {
-                          setState(() {
-                            isSwitched = value;
-                          });
-                        },
-                      ),
-                    ],
-                  ),
+                    ),
+                    Switch(
+                      value: isSwitched,
+                      onChanged: (value) {
+                        setState(() {
+                          isSwitched = value;
+                        });
+                      },
+                    ),
+                  ],
                 ),
                 _itemMenu(
                     icon: 'assets/images/icons8-lock-100.png',
@@ -224,7 +224,7 @@ class _ProfilesState extends State<Profiles> {
                     callback: () => Navigator.push(
                         context,
                         MaterialPageRoute(
-                            builder: (context) => const EditProfilePage()))),
+                            builder: (context) => const InviteFriendPage()))),
                 _itemMenu(
                     icon: 'assets/images/icons8-logout-100.png',
                     title: logout,

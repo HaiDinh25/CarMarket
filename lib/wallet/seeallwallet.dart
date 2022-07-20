@@ -38,10 +38,7 @@ class _SeeAllWalletState extends State<SeeAllWallet> {
                 width: 70,
                 child: GestureDetector(
                   onTap: () {
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(builder: (context) => const WalletPage()),
-                    );
+                    Navigator.pop(context);
                   },
                   child: Image.asset('assets/images/icons8-left-96.png'),
                 ),
@@ -227,46 +224,43 @@ class _SeeAllWalletState extends State<SeeAllWallet> {
         VoidCallback? callback}) {
     return InkWell(
       onTap: callback,
-      child: Row(
-        children: <Widget>[
-          const SizedBox(
-            width: 20,
-          ),
-          Container(
-            height: 50,
-            width: 50,
-            padding: const EdgeInsets.all(5),
-            decoration: BoxDecoration(
-                color: Colors.blueGrey.shade100,
-                borderRadius: const BorderRadius.all(Radius.circular(100))),
-            child: ClipRRect(
-              borderRadius: BorderRadius.circular(100),
-              child: Image.asset(
-                icon,
-                fit: BoxFit.fill,
+      child: Container(
+        padding: const EdgeInsets.all(20),
+        child: Row(
+          children: <Widget>[
+            Container(
+              height: 50,
+              width: 50,
+              padding: const EdgeInsets.all(5),
+              decoration: BoxDecoration(
+                  color: Colors.blueGrey.shade100,
+                  borderRadius: const BorderRadius.all(Radius.circular(100))),
+              child: ClipRRect(
+                borderRadius: BorderRadius.circular(100),
+                child: Image.asset(
+                  icon,
+                  fit: BoxFit.fill,
+                ),
               ),
             ),
-          ),
-          Expanded(
-            child: Container(
-              padding: const EdgeInsets.all(20),
-              alignment: Alignment.centerLeft,
-              child: Column(
-                children: [
-                  Text(
-                    title,
-                    style: const TextStyle(
-                        fontSize: 18, fontWeight: FontWeight.w500),
-                  ),
-                  Text(time)
-                ],
+            Expanded(
+              child: Container(
+                padding: const EdgeInsets.fromLTRB(20, 0, 0, 0),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Text(
+                      title,
+                      style: const TextStyle(
+                          fontSize: 18, fontWeight: FontWeight.w500),
+                    ),
+                    Text(time)
+                  ],
+                ),
               ),
             ),
-          ),
-          Container(
-            padding: const EdgeInsets.all(20),
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.start,
+            Column(
+              crossAxisAlignment: CrossAxisAlignment.end,
               children: [
                 Text(
                   price,
@@ -274,7 +268,7 @@ class _SeeAllWalletState extends State<SeeAllWallet> {
                       fontSize: 18, fontWeight: FontWeight.w500),
                 ),
                 Row(
-                  mainAxisAlignment: MainAxisAlignment.end,
+                  crossAxisAlignment: CrossAxisAlignment.end,
                   children: <Widget>[
                     Text(time),
                     Container(
@@ -286,9 +280,9 @@ class _SeeAllWalletState extends State<SeeAllWallet> {
                   ],
                 )
               ],
-            ),
-          )
-        ],
+            )
+          ],
+        ),
       ),
     );
   }

@@ -37,11 +37,7 @@ class _PaymentState extends State<Payment> {
                 width: 70,
                 child: GestureDetector(
                   onTap: () {
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                          builder: (context) => const ProfilesPage()),
-                    );
+                    Navigator.pop(context);
                   },
                   child: Image.asset('assets/images/icons8-left-96.png'),
                 ),
@@ -49,7 +45,7 @@ class _PaymentState extends State<Payment> {
               const Expanded(
                 child: Text(
                   payment,
-                  style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+                  style: TextStyle(fontSize: 22, fontWeight: FontWeight.bold),
                 ),
               ),
               Container(

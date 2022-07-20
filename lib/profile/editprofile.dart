@@ -53,11 +53,7 @@ class _EditProfileState extends State<EditProfile> {
                 width: 70,
                 child: GestureDetector(
                   onTap: () {
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                          builder: (context) => const ProfilesPage()),
-                    );
+                    Navigator.pop(context);
                   },
                   child: Image.asset('assets/images/icons8-left-96.png'),
                 ),
