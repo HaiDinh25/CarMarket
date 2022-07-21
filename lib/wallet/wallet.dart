@@ -285,8 +285,8 @@ class _WalletState extends State<Wallet> {
         child: Row(
           children: <Widget>[
             Container(
-              height: 50,
-              width: 50,
+              height: 70,
+              width: 70,
               padding: const EdgeInsets.all(5),
               decoration: BoxDecoration(
                   color: Colors.blueGrey.shade100,

@@ -1,5 +1,4 @@
 import 'package:car_market/const/string.dart';
-import 'package:car_market/profile/profile.dart';
 import 'package:flutter/material.dart';
 
 class LanguagePage extends StatefulWidget {

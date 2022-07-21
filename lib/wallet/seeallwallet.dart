@@ -1,6 +1,5 @@
 import 'package:car_market/const/string.dart';
 import 'package:car_market/home/topdealseeall.dart';
-import 'package:car_market/wallet/wallet.dart';
 import 'package:flutter/material.dart';
 
 class SeeAllWalletPage extends StatefulWidget {
@@ -229,8 +228,8 @@ class _SeeAllWalletState extends State<SeeAllWallet> {
         child: Row(
           children: <Widget>[
             Container(
-              height: 50,
-              width: 50,
+              height: 70,
+              width: 70,
               padding: const EdgeInsets.all(5),
               decoration: BoxDecoration(
                   color: Colors.blueGrey.shade100,

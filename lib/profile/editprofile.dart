@@ -139,6 +139,7 @@ class _EditProfileState extends State<EditProfile> {
                   padding: const EdgeInsets.all(20),
                   child: TextField(
                     controller: phoneController,
+                    keyboardType: TextInputType.number,
                     decoration: InputDecoration(
                         hintText: 'Phone Number',
                         border: OutlineInputBorder(

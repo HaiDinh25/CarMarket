@@ -226,12 +226,11 @@ class _ProfilesState extends State<Profiles> {
                         MaterialPageRoute(
                             builder: (context) => const InviteFriendPage()))),
                 _itemMenu(
-                    icon: 'assets/images/icons8-logout-100.png',
-                    title: logout,
-                    callback: () => Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                            builder: (context) => const MyApp()))),
+                  icon: 'assets/images/icons8-logout-100.png',
+                  title: logout,
+                  callback: () => _show(context),
+                  // callback: () =>   _showMaterialDialog()
+                ),
               ],
             ),
           ))
@@ -273,5 +272,88 @@ class _ProfilesState extends State<Profiles> {
         ],
       ),
     );
+  }
+
+  void _show(BuildContext ctx) {
+    showModalBottomSheet(
+        backgroundColor: Colors.white,
+        shape: const RoundedRectangleBorder(
+            borderRadius: BorderRadius.only(
+                topLeft: Radius.circular(20.0),
+                topRight: Radius.circular(20.0))),
+        context: ctx,
+        builder: (ctx) => Container(
+            padding: const EdgeInsets.all(20),
+            width: 300,
+            height: 250,
+            alignment: Alignment.center,
+            child: Expanded(
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.spaceAround,
+                children: [
+                  const Text('Logout',
+                      style: TextStyle(
+                          color: Colors.red,
+                          fontSize: 22,
+                          fontWeight: FontWeight.bold)),
+                  Row(children: const <Widget>[
+                    Expanded(
+                        child: Padding(
+                            padding: EdgeInsets.symmetric(
+                              horizontal: 10,
+                            ),
+                            child: Divider(thickness: 1)))
+                  ]),
+                  const Text(
+                    'Are you sure you want to Logout',
+                    style: TextStyle(fontWeight: FontWeight.bold, fontSize: 16),
+                  ),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: <Widget>[
+                      Container(
+                          width: 150,
+                          decoration: BoxDecoration(
+                              border: Border.all(width: 1),
+                              borderRadius:
+                                  const BorderRadius.all(Radius.circular(20)),
+                              color: Colors.white),
+                          child: TextButton(
+                              onPressed: () {
+                                Navigator.pop(context);
+                              },
+                              child: const Text(
+                                'Cancel',
+                                style: TextStyle(
+                                    color: Colors.black,
+                                    fontWeight: FontWeight.normal),
+                              ))),
+                      Container(
+                        width: 150,
+                        decoration: BoxDecoration(
+                            border: Border.all(width: 1),
+                            borderRadius:
+                                const BorderRadius.all(Radius.circular(20)),
+                            color: Colors.white),
+                        child: TextButton(
+                          onPressed: () {
+                            Navigator.of(context).pushAndRemoveUntil(
+                                MaterialPageRoute(
+                                    builder: (context) => const MyApp()),
+                                (Route<dynamic> route) => false);
+                            // Navigator.of(context)
+                            //     .pushNamedAndRemoveUntil(MaterialPageRoute(builder: (context) => MyApp()), (Route<dynamic> route) => false))
+                          },
+                          child: const Text('Yes,Logout',
+                              style: TextStyle(
+                                  color: Colors.black,
+                                  fontWeight: FontWeight.normal)),
+                        ),
+                      )
+                    ],
+                  )
+                ],
+              ),
+            )));
   }
 }

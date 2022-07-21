@@ -1,6 +1,4 @@
 import 'package:car_market/const/string.dart';
-
-import 'package:car_market/profile/profile.dart';
 import 'package:flutter/material.dart';
 
 class InviteFriendPage extends StatefulWidget {
@@ -25,6 +23,7 @@ class InviteFriend extends StatefulWidget {
 }
 
 class _InviteFriendState extends State<InviteFriend> {
+
   @override
   Widget build(BuildContext context) {
     return SafeArea(
@@ -45,7 +44,7 @@ class _InviteFriendState extends State<InviteFriend> {
               ),
               const Expanded(
                 child: Text(
-                  language,
+                  invitefriend,
                   style: TextStyle(fontSize: 22, fontWeight: FontWeight.bold),
                 ),
               ),
@@ -57,12 +56,52 @@ class _InviteFriendState extends State<InviteFriend> {
               children: <Widget>[
                 _itemMenu1(
                   icon: 'assets/images/bmwi8.jpg',
-                  title: logout,
-                  time: 'hello',
+                  title: name,
+                  time: phonenumber,
+                ),
+                _itemMenu1(
+                  icon: 'assets/images/bmwi8.jpg',
+                  title: name,
+                  time: phonenumber,
+                ),
+                _itemMenu1(
+                  icon: 'assets/images/bmwi8.jpg',
+                  title: name,
+                  time: phonenumber,
+                ),
+                _itemMenu1(
+                  icon: 'assets/images/bmwi8.jpg',
+                  title: name,
+                  time: phonenumber,
+                ),
+                _itemMenu1(
+                  icon: 'assets/images/bmwi8.jpg',
+                  title: name,
+                  time: phonenumber,
+                ),
+                _itemMenu1(
+                  icon: 'assets/images/bmwi8.jpg',
+                  title: name,
+                  time: phonenumber,
+                ),
+                _itemMenu1(
+                  icon: 'assets/images/bmwi8.jpg',
+                  title: name,
+                  time: phonenumber,
+                ),
+                _itemMenu1(
+                  icon: 'assets/images/bmwi8.jpg',
+                  title: name,
+                  time: phonenumber,
+                ),
+                _itemMenu1(
+                  icon: 'assets/images/bmwi8.jpg',
+                  title: name,
+                  time: phonenumber,
                 ),
               ],
             ),
-          ))
+          )),
         ],
       ),
     );
@@ -76,9 +115,9 @@ class _InviteFriendState extends State<InviteFriend> {
         child: Row(
           children: <Widget>[
             Container(
-              height: 50,
-              width: 50,
-              padding: const EdgeInsets.all(5),
+              height: 70,
+              width: 70,
+              padding: const EdgeInsets.all(0),
               decoration: const BoxDecoration(
                   borderRadius: BorderRadius.all(Radius.circular(100))),
               child: ClipRRect(
@@ -88,6 +127,9 @@ class _InviteFriendState extends State<InviteFriend> {
                   fit: BoxFit.fill,
                 ),
               ),
+            ),
+            const SizedBox(
+              width: 10,
             ),
             Expanded(
               child: Column(
@@ -103,23 +145,16 @@ class _InviteFriendState extends State<InviteFriend> {
               ),
             ),
             Container(
-              margin: const EdgeInsets.all(20),
-              alignment: Alignment.center,
-              height: 24,
-              width: 24,
+              padding: const EdgeInsets.fromLTRB(20, 10, 20, 10),
               decoration: BoxDecoration(
-                border: Border.all(
-                    width: 2),
-                shape: BoxShape.circle,
+                  border: Border.all(width: 1),
+                  borderRadius: const BorderRadius.all(Radius.circular(20)),
+                  color: Colors.black),
+              child: const Text(
+                'Invite',
+                style: TextStyle(fontSize: 16, color: Colors.white),
               ),
-              child: Container(
-                height: 16,
-                width: 16,
-                decoration: BoxDecoration(
-                  shape: BoxShape.circle,
-                ),
-              ),
-            ),
+            )
           ],
         ),
       ),
